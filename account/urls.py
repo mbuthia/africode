@@ -17,8 +17,10 @@ from django.conf.urls import url
 from . import views
 
 urlpatterns = [
-    url(r'^/login',views.login,name='login'),
-      url(r'^/register',views.register,name='register'),
+    url(r'^login/',views.login_s,name='login'),
+      url(r'^register/',views.register,name='register'),
+      url(r'^logout/',views.logout_s,name="logout"),
+      url(r'^items/upload/',views.account_items_upload,name='upload_item')
     ##url(r'^admin/', admin.site.urls),
     
 ]

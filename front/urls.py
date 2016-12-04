@@ -20,6 +20,8 @@ from front.views import homepage
 
 urlpatterns = [
     url(r'^$',views.homepage,name='hoempage'),
+    url(r'^about/',views.about,name="about"),
+    url(r'^contact/',views.contact,name="contact")
     ##url(r'^admin/', admin.site.urls),
     
 ]

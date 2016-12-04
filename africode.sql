@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost:3306
--- Generation Time: Dec 02, 2016 at 11:58 PM
+-- Generation Time: Dec 04, 2016 at 03:22 PM
 -- Server version: 5.7.16-0ubuntu0.16.04.1
 -- PHP Version: 7.0.8-0ubuntu0.16.04.3
 
@@ -52,6 +52,14 @@ CREATE TABLE `account_category` (
   `description` varchar(500) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `account_category`
+--
+
+INSERT INTO `account_category` (`id`, `name`, `description`) VALUES
+(1, 'PHP', 'PHP'),
+(2, 'JAVA', 'JAVA');
+
 -- --------------------------------------------------------
 
 --
@@ -71,6 +79,13 @@ CREATE TABLE `account_item` (
   `category_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `account_item`
+--
+
+INSERT INTO `account_item` (`id`, `title`, `description`, `price`, `screen_shot`, `file`, `demo`, `download`, `reviews`, `category_id`, `user_id`) VALUES
+(1, 'Hotel Management System', 'Hotel Management System Hotel Management System Hotel Management System', 0, 'N?A', 'N/A', 'N/A', 2, 0, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -201,6 +216,13 @@ CREATE TABLE `auth_user` (
   `date_joined` datetime(6) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `auth_user`
+--
+
+INSERT INTO `auth_user` (`id`, `password`, `last_login`, `is_superuser`, `username`, `first_name`, `last_name`, `email`, `is_staff`, `is_active`, `date_joined`) VALUES
+(1, 'pbkdf2_sha256$30000$1iq57E95YRq3$vb3RVgKzqBF/9vLguR+LLRL6yQEuXzlUVsugvG5bv5c=', '2016-12-04 11:53:54.408057', 1, 'root', '', '', 'root@root.com', 1, 1, '2016-12-02 22:39:47.832541');
+
 -- --------------------------------------------------------
 
 --
@@ -241,6 +263,16 @@ CREATE TABLE `django_admin_log` (
   `content_type_id` int(11) DEFAULT NULL,
   `user_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `django_admin_log`
+--
+
+INSERT INTO `django_admin_log` (`id`, `action_time`, `object_id`, `object_repr`, `action_flag`, `change_message`, `content_type_id`, `user_id`) VALUES
+(1, '2016-12-03 11:30:01.204131', '1', 'PHP SCRIPTS', 1, '[{"added": {}}]', 10, 1),
+(2, '2016-12-03 11:30:14.428318', '2', 'JAVA', 1, '[{"added": {}}]', 10, 1),
+(3, '2016-12-04 11:54:09.537416', '1', 'PHP', 2, '[{"changed": {"fields": ["name"]}}]', 10, 1),
+(4, '2016-12-04 12:09:28.610469', '1', 'Hotel Management System', 1, '[{"added": {}}]', 9, 1);
 
 -- --------------------------------------------------------
 
@@ -315,6 +347,18 @@ CREATE TABLE `django_session` (
   `session_data` longtext NOT NULL,
   `expire_date` datetime(6) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `django_session`
+--
+
+INSERT INTO `django_session` (`session_key`, `session_data`, `expire_date`) VALUES
+('dob842zox65jynn40alb48yg64twy7eq', 'NDZjNmY1YzVlN2UwYmMyY2JkNTcyMzVkZDBhNjk2YzI5NGI5NTlmMjp7fQ==', '2016-12-17 11:13:09.736454'),
+('eb0blddw7xezh111ne7o3ut6g19h621b', 'NDZjNmY1YzVlN2UwYmMyY2JkNTcyMzVkZDBhNjk2YzI5NGI5NTlmMjp7fQ==', '2016-12-17 11:13:31.924724'),
+('h606ft1i1q075ooziwf8vgr43dkvxrqx', 'OTk4MmRkOTE5YWJiODE0Y2NkNjM4YzQzNWRjZmFhYzFlMDQ0MWZiOTp7Il9hdXRoX3VzZXJfaGFzaCI6IjcwM2ZlYjc5M2NmYWNmNmEzMDNlODliYWI1OTdhMTVkZmJhNDA1ZDYiLCJfYXV0aF91c2VyX2JhY2tlbmQiOiJkamFuZ28uY29udHJpYi5hdXRoLmJhY2tlbmRzLk1vZGVsQmFja2VuZCIsIl9hdXRoX3VzZXJfaWQiOiIxIn0=', '2016-12-17 11:29:36.859026'),
+('h9wqko5oyifn6gb4siwpcfutc2u2vuec', 'NDZjNmY1YzVlN2UwYmMyY2JkNTcyMzVkZDBhNjk2YzI5NGI5NTlmMjp7fQ==', '2016-12-17 11:13:50.357459'),
+('knj82nqvnyo00ekpo2n36yk1y573betk', 'NDZjNmY1YzVlN2UwYmMyY2JkNTcyMzVkZDBhNjk2YzI5NGI5NTlmMjp7fQ==', '2016-12-17 11:11:58.576481'),
+('kpk3rngl2mhq2m1jp85oogs9hrc51qh4', 'NDZjNmY1YzVlN2UwYmMyY2JkNTcyMzVkZDBhNjk2YzI5NGI5NTlmMjp7fQ==', '2016-12-17 11:11:02.827375');
 
 --
 -- Indexes for dumped tables
@@ -440,12 +484,12 @@ ALTER TABLE `account_account`
 -- AUTO_INCREMENT for table `account_category`
 --
 ALTER TABLE `account_category`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `account_item`
 --
 ALTER TABLE `account_item`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `account_payment`
 --
@@ -475,7 +519,7 @@ ALTER TABLE `auth_permission`
 -- AUTO_INCREMENT for table `auth_user`
 --
 ALTER TABLE `auth_user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `auth_user_groups`
 --
@@ -490,7 +534,7 @@ ALTER TABLE `auth_user_user_permissions`
 -- AUTO_INCREMENT for table `django_admin_log`
 --
 ALTER TABLE `django_admin_log`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `django_content_type`
 --

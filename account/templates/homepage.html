@@ -2,13 +2,54 @@
 {% block content %}
 {% load static%}
  <!-- Main component for a primary marketing message or call to action -->
-      <div class="jumbotron">
-        <h1>Navbar example</h1>
-        <p>This example is a quick exercise to illustrate how the default, static and fixed to top navbar work. It includes the responsive CSS and HTML, so it also adapts to your viewport and device.</p>
-        <p>To see the difference between static and fixed top navbars, just scroll.</p>
-        <p>
-          <a class="btn btn-lg btn-primary" href="../../components/#navbar" role="button">View navbar docs &raquo;</a>
-        </p>
+      <div class="container">
+      
+       
+       
+        {% for category in category %}
+       
+       
+     <a href="/category/{{category.id}}/{{category}}">{{category}} </a>&nbsp;
+       {% endfor %}
+       
+        <h4>Discover 19,290 code scripts and plugins.Get all the code you need from PHP to Bootstrap
+        </h4>
+      
+      <div class="container">
+	<div class="row">
+		<form action="/" method="post">
+		{%csrf_token%}
+           <div id="custom-search-input" >
+                            <div class="input-group col-md-12" >
+                                <input type="text" class="  search-query form-control" style="padding:15px;" placeholder="Search" />
+                                <span class="input-group-btn">
+                                    <button class="btn btn-warning" type="submit">
+                                        <span class=" glyphicon glyphicon-search"></span>
+                                    </button>
+                                </span>
+                            </div>
+                        </div>
+                        </form>
+	</div>
+</div>
+<hr>
+
+
+
       </div>
+      <section class="container">
+  <div class="grid-container">
+    <div class="home-featured-items__container h-mt3 h-mb3">
+      <div class="home-featured-items__header">
+        <h3 class="t-heading -size-l h-text-align-center">
+          Discover this week’s Featured plugins and code
+        </h3>
+        <p class="t-body h-text-align-center">This week’s best code snippets and scripts have arrived, all carefully hand-picked by our Quality team! Find out what items have been making our heads turn.</p>
+      </div>
+     
+    
+    </div>
+  </div>
+</section>
 {%endblock%}
      

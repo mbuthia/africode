@@ -43,22 +43,31 @@ body {
   border-top-left-radius: 0;
   border-top-right-radius: 0;
 }
-</style> <form class="form-signin" action="/account/login/" method="POST">
+</style> 
 
+<form class="form-signin" action="/accounts/login/" method="POST" autocomplete="off">
 {%csrf_token%}
-        <h3 class="form-signin-heading"><i class="glyphicon glyphicon-user"></i> Please sign in</h3>
-        <label for="inputEmail" class="sr-only">Email address</label>
-        <input type="email" id="inputEmail" name="email" class="form-control" placeholder="Email address" required autofocus>
+<h3 class="form-signin-heading"></i>Please sign in</h3>
+{%if messages%}
+{%for message in messages%}
+<div class="alert-success" style="padding:7px;border-radius:7px;moz-border-radius:7px;web-border-radius:7px;">{{message}}</div>
+{%endfor%}
+{%endif%}
+<label for="inputEmail" >Email</label>
+<input type="email" id="inputEmail" name="email" class="form-control" placeholder="Email address" required autofocus>
         <br>
-        <label for="inputPassword" class="sr-only">Password</label>
-        <input type="password" id="inputPassword" name="password" class="form-control" placeholder="Password" required>
+        <label for="inputPassword" >Password</label>
+        <input type="password" " id="inputPassword" name="password" class="form-control" placeholder="Password" required>
         <div class="checkbox">
           <label>
             <input type="checkbox" value="remember-me" name="remember"> Remember me
           </label>
         </div>
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-       
+        <button class="btn btn-lg btn-warning btn-block" type="submit"><img src="{% static 'img/lock-1.png' %}" height="20">Sign in</button>
+     
+       <a href="/account/password/reset">Forgotten password ?</a>
+      <br>
+       Login with <a href=""><img src="{% static 'img/fb.png' %}" height="30"/> </a>or <a href=""><img src="{% static 'img/ggle.png' %}" height="30"/></a>
       </form>
-
+<br><br><br><br>
 {% endblock %}
