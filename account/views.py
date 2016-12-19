@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
-
-from account.form import LoginForm
+from datetime import datetime
+from account.form import LoginForm,RegisterForm
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate,login,logout
 from django.contrib.auth.decorators import login_required
@@ -40,7 +40,47 @@ def login_s(request):
 
 
 def register(request):
-    return render(request,'register.html',{'category':Category.objects.all()})
+    if request.method == 'POST':
+        form_register = RegisterForm(request.POST)
+        if form_register.is_valid():
+            ##data clean
+            firstname = form_register.cleaned_data.get('firstname')
+            lastname = form_register.cleaned_data.get('lastname')
+            email = form_register.cleaned_data.get('email')
+            password =form_register.cleaned_data.get('password')
+            confirm_password = form_register.cleaned_data.get('confirm_password')
+            ##check existence of the user
+            user =User.objects.filter(email=email).count()
+            if user>0:
+                messages.add_message(request,messages.INFO,'email already taken')
+                return redirect('/accounts/register')
+            else:
+                ## password match
+                if password == confirm_password:
+                    ## assign data to model
+                    user = User(
+                        first_name = firstname,
+                        last_name = lastname,
+                        email=email,
+                        username = email,
+                        password = password,
+                        last_login = datetime.now()
+                    )
+                    ## hash the password
+                    user.set_password(password)
+                    ## save data
+                    user.save()
+                    messages.add_message(request,messages.INFO,'account created successfully')
+                    return redirect('/accounts/login')
+                else:
+                    messages.add_message(request,messages.INFO,'password does not match')
+
+                    return redirect('/accounts/register')
+
+    else:
+        form_register = RegisterForm()
+
+    return render(request, 'register.html', {'category': Category.objects.all(),'form':form_register})
 
 def logout_s(request):
     logout(request)
