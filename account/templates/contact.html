@@ -3,5 +3,29 @@
 {% load static%}
 
 
+<div class="container">
+    <div class="row col-md-12" >
+        <div class="col-md-8">
+            {%if messages%}
+{%for message in messages%}
+<div class="alert-success" style="padding:7px;border-radius:7px;moz-border-radius:7px;web-border-radius:7px;">{{message}}</div>
+{%endfor%}
+{%endif%}
+            <form enctype="multipart/form-data" method="post" action="">
+                {%csrf_token%}
+                 {{ form.as_p }}
+                <div class="form-group">
+
+                        <button class="btn btn-warning" type="submit">Submit</button>
+
+
+                </div>
+            </form>
+        </div>
+        <div class="col-md-4">
+
+        </div>
+    </div>
+</div>
 
 {% endblock %}
